@@ -1,5 +1,4 @@
-//Does this need to create a local file? Perhaps it is smarter to already get this data while making the request and collecting song names etc without this file.
-
+//TODO: determine if this needs to create a local file? Perhaps it is smarter to already get this data while making the request and collecting song names etc without this file.
 
 const fs = require('fs');
 const { stringify } = require('querystring');
@@ -14,7 +13,7 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
     const artist = [];
     if (!localsetlist.artist.name) {
         console.log('No artist found')
-    } else artist.push(localsetlist.artist.name);
+    } else /*artist.push(localsetlist.artist.name),*/ artist.push(localsetlist.artist.name);
     //console.log(artist);
 
     //Grabbing tour name for playlist naming.

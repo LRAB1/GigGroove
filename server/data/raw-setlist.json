@@ -2,7 +2,7 @@
    "id" : "3d69d57",
    "versionId" : "b2ca5ea",
    "eventDate" : "13-08-2003",
-   "lastUpdated" : "2020-10-27T22:14:09.000+0000",
+   "lastUpdated" : "2020-10-27T22:14:09.321+0000",
    "artist" : {
       "mbid" : "b071f9fa-14b0-4217-8e97-eb41da73f598",
       "name" : "The Rolling Stones",
@@ -83,6 +83,7 @@
             "name" : "Street Fighting Man"
          } ]
       }, {
+         "name" : "",
          "song" : [ {
             "name" : "Gimme Shelter"
          }, {
