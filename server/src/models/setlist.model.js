@@ -13,7 +13,7 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
     const artist = [];
     if (!localsetlist.artist.name) {
         console.log('No artist found')
-    } else /*artist.push(localsetlist.artist.name),*/ artist.push(localsetlist.artist.name);
+    } else artist.push(localsetlist.artist.name);
     //console.log(artist);
 
     //Grabbing tour name for playlist naming.
@@ -42,5 +42,5 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
     }   else console.log('Data not known to SetlistFm');
 
     //Create setlist.txt, containing artist, tourname and songlist(json unfortunately).
-    fs.writeFileSync('../../data/setlist.txt', artist + "\r\n" +  tour + "\r\n" + JSON.stringify(songs,null, 4));
+    fs.writeFileSync('../../data/setlist.js', artist + "\r\n" +  tour + "\r\n" + JSON.stringify(songs,null, 4));
 });

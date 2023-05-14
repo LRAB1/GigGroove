@@ -1,5 +1,5 @@
-The Rolling Stones
-Licks World Tour
+const artist = 'The Rolling Stones';
+const tour = 'Licks World Tour'
 [
     {
         "song": [
@@ -92,7 +92,11 @@ Licks World Tour
                 "name": "Jumpin' Jack Flash"
             }
         ]
-    }
+    },
+    null
 ]
 
-module.exports = {${artist}}
+module.exports = {
+    artist,
+    tour
+}; //exports artist for spotify controller. This is now done by hand.

@@ -1,7 +1,5 @@
 const fs = require('fs');
-
-//Import artist, tour and songs from txt file.
-fs.createReadStream('../../data/setlist.txt')
+const {artist, tour} = require('../../data/setlist');
 
 
 
