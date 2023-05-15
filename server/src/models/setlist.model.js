@@ -1,5 +1,7 @@
 const fs = require('fs');
 
+//TODO: add date and venue to setlist.js export
+
 fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
   if (err) throw err;
   const localsetlist = JSON.parse(setlist);
@@ -28,7 +30,9 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
 
   const output = `const artist = ${artist};
 const tour = ${tour};
-const songs = [${songs}];`;
+const songs = [${songs}];
+
+module.exports = { artist, tour, songs };`;
 
   fs.writeFileSync('../../data/setlist.js', output);
 });
