@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-//TODO: add date and venue to setlist.js export
+//TODO: add date to setlist.js export
 
 fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
   if (err) throw err;
@@ -28,11 +28,28 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
     console.log('No songs found');
   }
 
+  let venue = '';
+  if (localsetlist.venue && localsetlist.venue.name) {
+    venue = `"${localsetlist.venue.name}"`;
+    } else {
+      console.log('No venue found');
+    }
+
+//TODO: Get the date and add to output.
+  /*let date = '';
+    if (localsetlist.eventDate) {
+      venue = `"${localsetlist.eventDate}"`;
+      console.log(date);
+      } else {
+        console.log('No date found');
+      }*/
+
   const output = `const artist = ${artist};
+const venue = ${venue};
 const tour = ${tour};
 const songs = [${songs}];
 
-module.exports = { artist, tour, songs };`;
+module.exports = { artist, venue, tour, songs };`;
 
   fs.writeFileSync('../../data/setlist.js', output);
 });

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const {artist, tour, songs} = require('../../data/setlist');
+const {artist, tour, songs} = require('../../data/setlist.js');
 
 
 

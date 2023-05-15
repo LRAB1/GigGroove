@@ -1,9 +1,9 @@
-// Import the necessary modules
+const fs = require('fs');
+const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret } = require('../../../keys');
 const { artist, songs } = require('../../data/setlist');
 
-// Create a new instance of the SpotifyWebApi object and connect to the API
 function connectToSpotifyApi(spotifyClient, spotifySecret) {
   const spotifyApi = new SpotifyWebApi({
     clientId: spotifyClient,
@@ -22,7 +22,6 @@ function connectToSpotifyApi(spotifyClient, spotifySecret) {
     });
 }
 
-// Search for the artist ID using the artist name provided in setlist.js
 function searchArtist(spotifyApi, artistName) {
   return spotifyApi.searchArtists(artistName)
     .then((data) => {
@@ -39,44 +38,39 @@ function searchArtist(spotifyApi, artistName) {
     });
 }
 
-// Connect to the Spotify API and search for the artist ID
-function getArtistId() {
-  return connectToSpotifyApi(spotifyClient, spotifySecret)
-    .then((spotifyApi) => searchArtist(spotifyApi, artist))
-    .then((artistId) => {
-      console.log(`Found artist ID: ${artistId}`); //Debug routine
-      return artistId;
+function searchTracks(spotifyApi, artistName, trackNames) {
+  const trackIds = [];
+
+  const artistId = searchArtist(spotifyApi, artistName);
+
+  for (const trackName of trackNames) {
+    const searchResult = spotifyApi.searchTracks(`track:${trackName} artist:${artistName}`);
+    searchResult.then((data) => {
+      if (data.body.tracks.total > 0) {
+        const topTrack = data.body.tracks.items[0];
+        console.log(`Found track: ${topTrack.name} by ${topTrack.artists[0].name}`);
+        trackIds.push(topTrack.id);
+      } else {
+        console.log(`Track not found: ${trackName}`);
+      }
+      if (trackIds.length === trackNames.length) {
+        const output = {
+          artist,
+          songs: trackIds,
+        };
+        const outputPath = path.join(__dirname, '../../data/playlist.json');
+        fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
+        console.log(`Playlist saved to ${outputPath}`);
+      }
+    }).catch((error) => {
+      console.log(`Error searching for track: ${trackName}`, error);
+      throw error;
     });
+  }
 }
 
-getArtistId();
-
-// Create a new instance of the SpotifyWebApi object and connect to the API
-const spotifyApi = new SpotifyWebApi({
-  clientId: spotifyClient,
-  clientSecret: spotifySecret
-});
-
-// Get an access token using the built-in authorization tool
-spotifyApi
-  .clientCredentialsGrant()
-  .then((data) => {
-    console.log('Connected to Spotify API');
-    spotifyApi.setAccessToken(data.body['access_token']);
-
-    // Use the access token to search for tracks on Spotify
-    spotifyApi
-      .searchTracks(songs.join(' '))
-      .then((data) => {
-        console.log(`Found ${data.body.tracks.total} tracks`);
-        data.body.tracks.items.forEach((track) => {
-          console.log(`Track name: ${track.name}, Artist: ${track.artists[0].name}`);
-        });
-      })
-      .catch((error) => {
-        console.log('Error searching for tracks:', error);
-      });
-  })
+connectToSpotifyApi(spotifyClient, spotifySecret)
+  .then((spotifyApi) => searchTracks(spotifyApi, artist, songs))
   .catch((error) => {
-    console.log('Error connecting to Spotify API:', error);
+    console.log('Error:', error);
   });
