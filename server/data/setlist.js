@@ -1,6 +1,6 @@
 const artist = "Devin Townsend";
-const venue = "AFAS Live";
-const tour = "Europe 2022";
-const songs = ["Failure", "Kingdom", "By Your Command", "Aftermath", "Regulator", "Deadhead", "Deep Peace", "March of the Poozers", "More!"];
+const venue = "Poppodium 013";
+const tour = "Lightwork European Tour";
+const songs = ["Equation", "Lightworker", "Kingdom", "Dimensions", "Why?", "The Fluke", "Deadhead", "Deep Peace", "Heartbreaker", "Spirits Will Collide", "Truth", "Bad Devil", ""];
 
 module.exports = { artist, venue, tour, songs };
