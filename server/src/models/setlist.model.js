@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-//TODO: add date to setlist.js export
+//TODO: add date to setlist.js export and the ability to check for more than 1 encore and more than 1 set of songs.
 
 fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
   if (err) throw err;

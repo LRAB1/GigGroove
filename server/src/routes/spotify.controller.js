@@ -1,10 +1,11 @@
 // Import required libraries
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret, spotifyAccount } = require('../../keys.js');
+const artist = require('../../data/setlist.js')
 
 // Set the input setlist
-const setlist = {
-  artist: "Devin Townsend",
+const setlistSpotify = {
+  artist: 
   venue: "AFAS Live",
   tour: "Europe 2022",
   songs: ["Failure", "Kingdom", "By Your Command", "Aftermath", "Regulator", "Deadhead", "Deep Peace", "March of the Poozers", "More!"]
