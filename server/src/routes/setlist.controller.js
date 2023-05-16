@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const setlistFmKey = require('../../../keys.js')
+const {setlistFmKey} = require('../../../keys.js')
 
 const urlWithoutId = "https://api.setlist.fm/rest/1.0/setlist/";
 const iD = '3d69d57'; //Setlist Afas Devin 4bb7d3c2
