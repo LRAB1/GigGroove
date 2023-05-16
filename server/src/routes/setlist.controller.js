@@ -11,7 +11,6 @@ let config = {
   url: urlWithoutId + iD,
   headers: { 
     'accept': 'application/json', 
-    //'x-api-key': 'NAfOueu-etj29FHm3uehzhq5_Ipr3pD68Ii5'
     'x-api-key': setlistFmKey
   }
 };
