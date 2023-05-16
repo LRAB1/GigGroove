@@ -1,8 +1,8 @@
 {
-  "id": "4bb7d3c2",
-  "versionId": "g6bea7616",
-  "eventDate": "13-05-2022",
-  "lastUpdated": "2023-03-20T13:30:19.650+0000",
+  "id": "23ba2c6f",
+  "versionId": "g43ea7787",
+  "eventDate": "03-03-2023",
+  "lastUpdated": "2023-03-20T13:11:38.664+0000",
   "artist": {
     "mbid": "93e8c41e-8e4f-4d08-bbf5-bc1a903b2423",
     "name": "Devin Townsend",
@@ -11,59 +11,49 @@
     "url": "https://www.setlist.fm/setlists/devin-townsend-33d6b0f5.html"
   },
   "venue": {
-    "id": "23d574f7",
-    "name": "AFAS Live",
+    "id": "3bd790b8",
+    "name": "Poppodium 013",
     "city": {
-      "id": "2759794",
-      "name": "Amsterdam",
-      "state": "North Holland",
-      "stateCode": "07",
+      "id": "2746301",
+      "name": "Tilburg",
+      "state": "North Brabant",
+      "stateCode": "06",
       "coords": {
-        "lat": 52.373,
-        "long": 4.9
+        "lat": 51.555514883268,
+        "long": 5.09130477905273
       },
       "country": {
         "code": "NL",
         "name": "Netherlands"
       }
     },
-    "url": "https://www.setlist.fm/venue/afas-live-amsterdam-netherlands-23d574f7.html"
+    "url": "https://www.setlist.fm/venue/poppodium-013-tilburg-netherlands-3bd790b8.html"
   },
   "tour": {
-    "name": "Europe 2022"
+    "name": "Lightwork European Tour"
   },
   "sets": {
     "set": [
       {
         "song": [
           {
-            "name": "Failure",
-            "cover": {
-              "mbid": "b00cb756-0259-4a50-bbcb-ad22186c5518",
-              "name": "Devin Townsend Project",
-              "sortName": "Townsend, Devin, Project",
-              "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/devin-townsend-project-4bd48fde.html"
-            }
+            "name": "Equation",
+            "tape": true
+          },
+          {
+            "name": "Lightworker"
           },
           {
             "name": "Kingdom"
           },
           {
-            "name": "By Your Command"
+            "name": "Dimensions"
           },
           {
-            "name": "Aftermath",
-            "cover": {
-              "mbid": "584b72a4-45f7-46ce-b440-e9ee579d71c4",
-              "name": "Strapping Young Lad",
-              "sortName": "Strapping Young Lad",
-              "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/strapping-young-lad-6bd6caee.html"
-            }
+            "name": "Why?"
           },
           {
-            "name": "Regulator"
+            "name": "The Fluke"
           },
           {
             "name": "Deadhead",
@@ -76,24 +66,52 @@
             }
           },
           {
-            "name": "Deep Peace"
+            "name": "Deep Peace",
+            "info": "w/ extended solo by Devin & Mike"
           },
           {
-            "name": "March of the Poozers"
+            "name": "Heartbreaker"
           },
           {
-            "name": "More!",
+            "name": "Spirits Will Collide"
+          },
+          {
+            "name": "Truth"
+          },
+          {
+            "name": "Bad Devil"
+          },
+          {
+            "name": "",
+            "tape": true,
+            "info": "Transdermal Celebration ambience outro"
+          }
+        ]
+      },
+      {
+        "encore": 1,
+        "song": [
+          {
+            "name": "Call of the Void"
+          },
+          {
+            "name": "Love?",
             "cover": {
-              "mbid": "b00cb756-0259-4a50-bbcb-ad22186c5518",
-              "name": "Devin Townsend Project",
-              "sortName": "Townsend, Devin, Project",
+              "mbid": "584b72a4-45f7-46ce-b440-e9ee579d71c4",
+              "name": "Strapping Young Lad",
+              "sortName": "Strapping Young Lad",
               "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/devin-townsend-project-4bd48fde.html"
+              "url": "https://www.setlist.fm/setlists/strapping-young-lad-6bd6caee.html"
             }
+          },
+          {
+            "name": "",
+            "tape": true,
+            "info": "Frogs-R-Nice"
           }
         ]
       }
     ]
   },
-  "url": "https://www.setlist.fm/setlist/devin-townsend/2022/afas-live-amsterdam-netherlands-4bb7d3c2.html"
+  "url": "https://www.setlist.fm/setlist/devin-townsend/2023/poppodium-013-tilburg-netherlands-23ba2c6f.html"
 }
