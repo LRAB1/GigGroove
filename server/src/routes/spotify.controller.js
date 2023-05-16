@@ -1,14 +1,13 @@
-// Import required libraries
 const SpotifyWebApi = require('spotify-web-api-node');
-const { spotifyClient, spotifySecret, spotifyAccount } = require('../../keys.js');
-const artist = require('../../data/setlist.js')
+const { spotifyClient, spotifySecret, spotifyAccount } = require('../../../keys');
+const { artist, venue, tour, songs } = require('../../data/setlist.js');
 
 // Set the input setlist
 const setlistSpotify = {
-  artist: 
-  venue: "AFAS Live",
-  tour: "Europe 2022",
-  songs: ["Failure", "Kingdom", "By Your Command", "Aftermath", "Regulator", "Deadhead", "Deep Peace", "March of the Poozers", "More!"]
+  artist: artist,
+  venue: venue,
+  tour: tour,
+  songs: songs
 };
 
 // Create a new instance of the Spotify Web API client
@@ -18,22 +17,34 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: 'http://localhost:8888/callback'
 });
 
-// Retrieve an access token using the Client Credentials flow
-spotifyApi.clientCredentialsGrant().then((data) => {
+// Define the desired scopes
+const scopes = ['playlist-modify-public', 'playlist-modify-private'];
+
+// Generate the authorization URL
+const authorizeURL = spotifyApi.createAuthorizeURL(scopes);
+
+// Log the authorization URL and prompt the user to visit it to grant access
+console.log(`Please authorize the application by visiting this URL: ${authorizeURL}`);
+
+// After the user grants access and is redirected to the callback URL
+// Exchange the authorization code for an access token
+const authorizationCode = '...'; // Replace with the received authorization code
+spotifyApi.authorizationCodeGrant(authorizationCode).then((data) => {
   console.log('Access token generated');
 
-  // Set the access token on the API client
+  // Set the access token and refresh token on the API client
   spotifyApi.setAccessToken(data.body['access_token']);
+  spotifyApi.setRefreshToken(data.body['refresh_token']);
 
   // Create a new playlist with the given name
-  spotifyApi.createPlaylist(spotifyAccount, { name: `${setlist.artist} Live at ${setlist.venue}` })
+  spotifyApi.createPlaylist(spotifyAccount, { name: `${setlistSpotify.artist} Live at ${setlistSpotify.venue}`, public: false })
     .then((data) => {
       console.log(`Playlist created: ${data.body.name}`);
 
       // Add each song to the playlist
-      setlist.songs.forEach((song) => {
+      setlistSpotify.songs.forEach((song) => {
         // Search for the track using the artist and song name
-        spotifyApi.searchTracks(`${setlist.artist} ${song}`)
+        spotifyApi.searchTracks(`${setlistSpotify.artist} ${song}`)
           .then((data) => {
             // Add the first track from the search results to the playlist
             if (data.body.tracks.items.length > 0) {
