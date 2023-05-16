@@ -21,9 +21,16 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
   }
 
   let songs = '';
-  if (localsetlist.sets && Array.isArray(localsetlist.sets.set) && localsetlist.sets.set.length > 0) {
-    const set = localsetlist.sets.set[0];
-    songs = set.song.map(song => `"${song.name}"`).join(', ');
+  if (localsetlist.sets && localsetlist.sets.set) {
+    localsetlist.sets.set.forEach((set, index) => {
+      const setNumber = index + 1;
+      const songList = set.song.map(song => `"${song.name}"`).join(', ');
+      songs += `{
+        setNumber: ${setNumber},
+        songs: [${songList}]
+      }, `;
+    });
+    songs = `[${songs.slice(0, -2)}]`; // remove the last comma and space
   } else {
     console.log('No songs found');
   }
@@ -35,7 +42,7 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
       console.log('No venue found');
     }
 
-//TODO: Get the date and add to output.
+  //TODO: Get the date and add to output.
   /*let date = '';
     if (localsetlist.eventDate) {
       venue = `"${localsetlist.eventDate}"`;
@@ -47,7 +54,7 @@ fs.readFile('../../data/raw-setlist.json', (err, setlist) => {
   const output = `const artist = ${artist};
 const venue = ${venue};
 const tour = ${tour};
-const songs = [${songs}];
+const songs = ${songs};
 
 module.exports = { artist, venue, tour, songs };`;
 
