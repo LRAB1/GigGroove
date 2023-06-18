@@ -2,7 +2,6 @@ const express = require('express');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret, spotifyAccount, spotifyRedirectUri } = require('../../../keys');
 const { artist, venue, tour, songs } = require('../../data/setlist');
-const { addSongsToPlaylist } = require('./addSongs.controller.js');
 
 const app = express();
 const port = 8888;
@@ -15,21 +14,46 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 // Function to create a playlist
-const createPlaylist = () => {
-  return spotifyApi.createPlaylist(artist, { public: false })
-    .then((data) => {
-      console.log('Playlist created');
-      return data.body.id;
-    })
-    .catch((error) => {
-      console.log('Error creating playlist:', error);
-      throw error;
-    });
+const createPlaylist = async () => {
+  try {
+    const playlistName = `${artist} - ${tour}`;
+
+    const createPlaylistResponse = await spotifyApi.createPlaylist(artist, { name: playlistName, public: false });
+    console.log('Playlist created');
+    return createPlaylistResponse.body.id;
+  } catch (error) {
+    console.log('Error creating playlist:', error);
+    throw error;
+  }
+};
+
+// Function to add tracks to the playlist
+const addSongsToPlaylist = async (playlistId) => {
+  try {
+    const { songs } = require('../../data/setlist');
+
+    for (const set of songs) {
+      for (const song of set.songs) {
+        const searchResult = await spotifyApi.searchTracks(`${artist} ${song}`);
+        if (searchResult.body.tracks.items.length > 0) {
+          const track = searchResult.body.tracks.items[0];
+          await spotifyApi.addTracksToPlaylist(playlistId, [`spotify:track:${track.id}`]);
+          console.log(`Added ${track.name} by ${track.artists[0].name} to playlist`);
+        } else {
+          console.log(`No track found for ${song}`);
+        }
+      }
+    }
+
+    console.log('All tracks added to the playlist successfully!');
+  } catch (error) {
+    console.log('Error adding tracks to the playlist:', error);
+  }
 };
 
 // Route to initiate the authorization flow
 app.get('/', (req, res) => {
-  const authorizeURL = spotifyApi.createAuthorizeURL(['playlist-modify-public'], 'state');
+  const authorizeURL = spotifyApi.createAuthorizeURL(['playlist-modify-private'], 'state');
   res.redirect(authorizeURL);
 });
 
@@ -50,7 +74,7 @@ app.get('/callback', (req, res) => {
     })
     .then((playlistId) => {
       console.log('Playlist ID:', playlistId);
-      return addSongsToPlaylist(songs, playlistId);
+      return addSongsToPlaylist(playlistId);
     })
     .then(() => {
       console.log('All tracks added to the playlist successfully!');
