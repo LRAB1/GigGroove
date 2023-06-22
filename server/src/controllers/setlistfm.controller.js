@@ -3,7 +3,7 @@ const fs = require('fs');
 const {setlistFmKey} = require('../../../keys.js')
 
 const urlWithoutId = "https://api.setlist.fm/rest/1.0/setlist/";
-const iD = '33b2c095'; //Setlist Afas Devin 4bb7d3c2
+const iD = '3bb3acc4'; //Setlist Afas Devin 4bb7d3c2
 
 let config = {
   method: 'get',

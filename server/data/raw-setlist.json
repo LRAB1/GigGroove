@@ -1,109 +1,86 @@
 {
-  "id": "33b2c095",
-  "versionId": "g7bf08a94",
-  "eventDate": "26-07-2022",
-  "lastUpdated": "2022-07-26T20:53:58.808+0000",
+  "id": "3bb3acc4",
+  "versionId": "g13f95191",
+  "eventDate": "04-06-2022",
+  "lastUpdated": "2022-10-24T06:48:44.248+0000",
   "artist": {
-    "mbid": "329f95db-f02e-40bf-a5f7-0dea11529ce3",
-    "name": "Enter Shikari",
-    "sortName": "Enter Shikari",
+    "mbid": "f0c8f75f-8736-4b1d-b312-9349fcff321d",
+    "name": "Wolfmother",
+    "sortName": "Wolfmother",
     "disambiguation": "",
-    "url": "https://www.setlist.fm/setlists/enter-shikari-53d6d375.html"
+    "url": "https://www.setlist.fm/setlists/wolfmother-33d6d059.html"
   },
   "venue": {
-    "id": "33d5fccd",
-    "name": "Melkweg The Max",
+    "id": "4bd24bba",
+    "name": "Effenaar Grote Zaal",
     "city": {
-      "id": "2759794",
-      "name": "Amsterdam",
-      "state": "North Holland",
-      "stateCode": "07",
+      "id": "2756253",
+      "name": "Eindhoven",
+      "state": "North Brabant",
+      "stateCode": "06",
       "coords": {
-        "lat": 52.373,
-        "long": 4.9
+        "lat": 51.440833,
+        "long": 5.477778
       },
       "country": {
         "code": "NL",
         "name": "Netherlands"
       }
     },
-    "url": "https://www.setlist.fm/venue/melkweg-the-max-amsterdam-netherlands-33d5fccd.html"
+    "url": "https://www.setlist.fm/venue/effenaar-grote-zaal-eindhoven-netherlands-4bd24bba.html"
   },
   "tour": {
-    "name": "Nothing Is True & Everything Is Possible"
+    "name": "Masters of the Euroverse Tour"
   },
   "sets": {
     "set": [
       {
         "song": [
           {
-            "name": "THE GREAT UNKNOWN"
+            "name": "Dimension"
           },
           {
-            "name": "Destabilise"
+            "name": "Woman"
           },
           {
-            "name": "Sssnakepit"
+            "name": "White Unicorn"
           },
           {
-            "name": "Juggernauts"
+            "name": "Apple Tree"
           },
           {
-            "name": "modern living…."
+            "name": "New Moon Rising"
           },
           {
-            "name": "Anaesthetist",
-            "info": "Reso remix outro"
+            "name": "Vagabond"
           },
           {
-            "name": "satellites* *"
+            "name": "Mind's Eye"
           },
           {
-            "name": "the pressure's on."
+            "name": "Pyramid"
           },
           {
-            "name": "The Paddington Frisk"
+            "name": "Joker & the Thief"
           },
           {
-            "name": "Arguing With Thermometers"
+            "name": "Roadhouse Blues",
+            "cover": {
+              "mbid": "9efff43b-3b29-4082-824e-bc82f646f93d",
+              "name": "The Doors",
+              "sortName": "Doors, The",
+              "disambiguation": "",
+              "url": "https://www.setlist.fm/setlists/the-doors-bd6adba.html"
+            },
+            "info": "requested by the audience"
           },
           {
-            "name": "Rabble Rouser"
-          },
-          {
-            "name": "Sorry, You're Not a Winner"
-          },
-          {
-            "name": "Gandhi Mate, Gandhi"
-          },
-          {
-            "name": "Mothership"
-          },
-          {
-            "name": "Solidarity"
-          }
-        ]
-      },
-      {
-        "encore": 1,
-        "song": [
-          {
-            "name": "Constellations",
-            "info": "Rou acoustic solo"
-          },
-          {
-            "name": "T.I.N.A."
-          },
-          {
-            "name": "{ The Dreamer's Hotel }"
-          },
-          {
-            "name": "Live Outside",
-            "info": "Stopped before last chorus, because a drumstick landed on a button that stopped the song. Resumed af"
+            "name": "Love Train"
           }
         ]
       }
     ]
   },
-  "url": "https://www.setlist.fm/setlist/enter-shikari/2022/melkweg-the-max-amsterdam-netherlands-33b2c095.html"
+  "info": "Setlist incomplete and out of order",
+  "url": "https://www.setlist.fm/setlist/wolfmother/2022/effenaar-grote-zaal-eindhoven-netherlands-3bb3acc4.html"
 }
