@@ -5,8 +5,7 @@ const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret } = require('../../../keys');
 //Commented out to test connection through playlist.json
-//const { artist, songs } = require('../../data/setlist');
-const {songs,artist} = require('../../data/playlist')
+const { artist, songs } = require('../../data/setlist');
 
 function connectToSpotifyApi(spotifyClient, spotifySecret) {
   const spotifyApi = new SpotifyWebApi({
