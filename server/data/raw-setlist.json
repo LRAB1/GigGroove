@@ -1,117 +1,86 @@
 {
-  "id": "23ba2c6f",
-  "versionId": "g43ea7787",
-  "eventDate": "03-03-2023",
-  "lastUpdated": "2023-03-20T13:11:38.664+0000",
+  "id": "3bb3acc4",
+  "versionId": "g13f95191",
+  "eventDate": "04-06-2022",
+  "lastUpdated": "2022-10-24T06:48:44.248+0000",
   "artist": {
-    "mbid": "93e8c41e-8e4f-4d08-bbf5-bc1a903b2423",
-    "name": "Devin Townsend",
-    "sortName": "Townsend, Devin",
+    "mbid": "f0c8f75f-8736-4b1d-b312-9349fcff321d",
+    "name": "Wolfmother",
+    "sortName": "Wolfmother",
     "disambiguation": "",
-    "url": "https://www.setlist.fm/setlists/devin-townsend-33d6b0f5.html"
+    "url": "https://www.setlist.fm/setlists/wolfmother-33d6d059.html"
   },
   "venue": {
-    "id": "3bd790b8",
-    "name": "Poppodium 013",
+    "id": "4bd24bba",
+    "name": "Effenaar Grote Zaal",
     "city": {
-      "id": "2746301",
-      "name": "Tilburg",
+      "id": "2756253",
+      "name": "Eindhoven",
       "state": "North Brabant",
       "stateCode": "06",
       "coords": {
-        "lat": 51.555514883268,
-        "long": 5.09130477905273
+        "lat": 51.440833,
+        "long": 5.477778
       },
       "country": {
         "code": "NL",
         "name": "Netherlands"
       }
     },
-    "url": "https://www.setlist.fm/venue/poppodium-013-tilburg-netherlands-3bd790b8.html"
+    "url": "https://www.setlist.fm/venue/effenaar-grote-zaal-eindhoven-netherlands-4bd24bba.html"
   },
   "tour": {
-    "name": "Lightwork European Tour"
+    "name": "Masters of the Euroverse Tour"
   },
   "sets": {
     "set": [
       {
         "song": [
           {
-            "name": "Equation",
-            "tape": true
+            "name": "Dimension"
           },
           {
-            "name": "Lightworker"
+            "name": "Woman"
           },
           {
-            "name": "Kingdom"
+            "name": "White Unicorn"
           },
           {
-            "name": "Dimensions"
+            "name": "Apple Tree"
           },
           {
-            "name": "Why?"
+            "name": "New Moon Rising"
           },
           {
-            "name": "The Fluke"
+            "name": "Vagabond"
           },
           {
-            "name": "Deadhead",
+            "name": "Mind's Eye"
+          },
+          {
+            "name": "Pyramid"
+          },
+          {
+            "name": "Joker & the Thief"
+          },
+          {
+            "name": "Roadhouse Blues",
             "cover": {
-              "mbid": "6e9d417e-7eb1-45dd-af0c-60ac85dfcd7a",
-              "name": "The Devin Townsend Band",
-              "sortName": "Townsend, Devin, Band, The",
+              "mbid": "9efff43b-3b29-4082-824e-bc82f646f93d",
+              "name": "The Doors",
+              "sortName": "Doors, The",
               "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/the-devin-townsend-band-6bd60aba.html"
-            }
+              "url": "https://www.setlist.fm/setlists/the-doors-bd6adba.html"
+            },
+            "info": "requested by the audience"
           },
           {
-            "name": "Deep Peace",
-            "info": "w/ extended solo by Devin & Mike"
-          },
-          {
-            "name": "Heartbreaker"
-          },
-          {
-            "name": "Spirits Will Collide"
-          },
-          {
-            "name": "Truth"
-          },
-          {
-            "name": "Bad Devil"
-          },
-          {
-            "name": "",
-            "tape": true,
-            "info": "Transdermal Celebration ambience outro"
-          }
-        ]
-      },
-      {
-        "encore": 1,
-        "song": [
-          {
-            "name": "Call of the Void"
-          },
-          {
-            "name": "Love?",
-            "cover": {
-              "mbid": "584b72a4-45f7-46ce-b440-e9ee579d71c4",
-              "name": "Strapping Young Lad",
-              "sortName": "Strapping Young Lad",
-              "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/strapping-young-lad-6bd6caee.html"
-            }
-          },
-          {
-            "name": "",
-            "tape": true,
-            "info": "Frogs-R-Nice"
+            "name": "Love Train"
           }
         ]
       }
     ]
   },
-  "url": "https://www.setlist.fm/setlist/devin-townsend/2023/poppodium-013-tilburg-netherlands-23ba2c6f.html"
+  "info": "Setlist incomplete and out of order",
+  "url": "https://www.setlist.fm/setlist/wolfmother/2022/effenaar-grote-zaal-eindhoven-netherlands-3bb3acc4.html"
 }
