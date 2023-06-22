@@ -1,86 +1,85 @@
 {
-  "id": "3bb3acc4",
-  "versionId": "g13f95191",
-  "eventDate": "04-06-2022",
-  "lastUpdated": "2022-10-24T06:48:44.248+0000",
+  "id": "1bd671f4",
+  "versionId": "2bb26cde",
+  "eventDate": "28-06-2009",
+  "lastUpdated": "2015-08-14T20:21:49.000+0000",
   "artist": {
-    "mbid": "f0c8f75f-8736-4b1d-b312-9349fcff321d",
-    "name": "Wolfmother",
-    "sortName": "Wolfmother",
+    "mbid": "f57e14e4-b030-467c-b202-539453f504ec",
+    "name": "Children of Bodom",
+    "sortName": "Children of Bodom",
     "disambiguation": "",
-    "url": "https://www.setlist.fm/setlists/wolfmother-33d6d059.html"
+    "url": "https://www.setlist.fm/setlists/children-of-bodom-4bd6835e.html"
   },
   "venue": {
-    "id": "4bd24bba",
-    "name": "Effenaar Grote Zaal",
+    "id": "7bd61e6c",
+    "name": "Boeretang",
     "city": {
-      "id": "2756253",
-      "name": "Eindhoven",
-      "state": "North Brabant",
-      "stateCode": "06",
+      "id": "2799511",
+      "name": "Dessel",
+      "state": "Antwerp",
+      "stateCode": "BE.AN",
       "coords": {
-        "lat": 51.440833,
-        "long": 5.477778
+        "lat": 51.233,
+        "long": 5.117
       },
       "country": {
-        "code": "NL",
-        "name": "Netherlands"
+        "code": "BE",
+        "name": "Belgium"
       }
     },
-    "url": "https://www.setlist.fm/venue/effenaar-grote-zaal-eindhoven-netherlands-4bd24bba.html"
-  },
-  "tour": {
-    "name": "Masters of the Euroverse Tour"
+    "url": "https://www.setlist.fm/venue/boeretang-dessel-belgium-7bd61e6c.html"
   },
   "sets": {
     "set": [
       {
         "song": [
           {
-            "name": "Dimension"
+            "name": "Needled 24/7"
           },
           {
-            "name": "Woman"
+            "name": "Bodom Beach Terror"
           },
           {
-            "name": "White Unicorn"
+            "name": "Hate Me!"
           },
           {
-            "name": "Apple Tree"
+            "name": "Living Dead Beat"
           },
           {
-            "name": "New Moon Rising"
+            "name": "In Your Face"
           },
           {
-            "name": "Vagabond"
+            "name": "Blooddrunk"
           },
           {
-            "name": "Mind's Eye"
+            "name": "Children of Decadence"
           },
           {
-            "name": "Pyramid"
+            "name": "Bed of Razors"
           },
           {
-            "name": "Joker & the Thief"
+            "name": "Hellhounds on My Trail"
           },
           {
-            "name": "Roadhouse Blues",
+            "name": "Angels Don't Kill"
+          },
+          {
+            "name": "The Final Countdown",
             "cover": {
-              "mbid": "9efff43b-3b29-4082-824e-bc82f646f93d",
-              "name": "The Doors",
-              "sortName": "Doors, The",
-              "disambiguation": "",
-              "url": "https://www.setlist.fm/setlists/the-doors-bd6adba.html"
+              "mbid": "ccfe7a3c-1a45-4984-a8d0-644549cefe61",
+              "name": "Europe",
+              "sortName": "Europe",
+              "disambiguation": "Swedish melodic heavy metal band - The Final Countdown",
+              "url": "https://www.setlist.fm/setlists/europe-2bd6cc22.html"
             },
-            "info": "requested by the audience"
+            "info": "Partial."
           },
           {
-            "name": "Love Train"
+            "name": "Downfall"
           }
         ]
       }
     ]
   },
-  "info": "Setlist incomplete and out of order",
-  "url": "https://www.setlist.fm/setlist/wolfmother/2022/effenaar-grote-zaal-eindhoven-netherlands-3bb3acc4.html"
+  "url": "https://www.setlist.fm/setlist/children-of-bodom/2009/boeretang-dessel-belgium-1bd671f4.html"
 }

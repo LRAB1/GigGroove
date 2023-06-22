@@ -1,5 +1,3 @@
-//Converts raw-setlist to setlist.js
-
 const fs = require('fs');
 const path = require('path');
 
@@ -8,7 +6,7 @@ const setlistData = require('../../data/raw-setlist.json');
 function formatSetlist(setlistData) {
   const artist = setlistData.artist.name;
   const venue = setlistData.venue.name;
-  const tour = setlistData.tour.name;
+  const tour = setlistData.tour ? setlistData.tour.name : `${venue}`; // Check if setlistData.tour exists
   const sets = setlistData.sets.set;
 
   const songs = sets.map((set, index) => {

@@ -1,21 +1,22 @@
-const artist = "Wolfmother";
-const venue = "Effenaar Grote Zaal";
-const tour = "Masters of the Euroverse Tour";
+const artist = "Children of Bodom";
+const venue = "Boeretang";
+const tour = "Boeretang";
 const songs = [
   {
     "setNumber": 1,
     "songs": [
-      "Dimension",
-      "Woman",
-      "White Unicorn",
-      "Apple Tree",
-      "New Moon Rising",
-      "Vagabond",
-      "Mind's Eye",
-      "Pyramid",
-      "Joker & the Thief",
-      "Roadhouse Blues",
-      "Love Train"
+      "Needled 24/7",
+      "Bodom Beach Terror",
+      "Hate Me!",
+      "Living Dead Beat",
+      "In Your Face",
+      "Blooddrunk",
+      "Children of Decadence",
+      "Bed of Razors",
+      "Hellhounds on My Trail",
+      "Angels Don't Kill",
+      "The Final Countdown",
+      "Downfall"
     ]
   }
 ];
