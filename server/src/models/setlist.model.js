@@ -1,3 +1,5 @@
+//Converts raw-setlist to setlist.js
+
 const fs = require('fs');
 const path = require('path');
 

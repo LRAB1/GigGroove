@@ -1,3 +1,5 @@
+//Creates playlist.json
+
 const fs = require('fs');
 const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
@@ -69,7 +71,7 @@ function searchTracks(spotifyApi, artistName, setlist) {
         artist: artistName,
         songs: trackIds,
       };
-      const outputPath = path.join(__dirname, '../../data/playlist.json');
+      const outputPath = path.join(__dirname, '../../data/playlist.js');
       fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
       console.log(`Playlist saved to ${outputPath}`);
     }

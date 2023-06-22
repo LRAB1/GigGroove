@@ -1,8 +1,12 @@
+//Converts setlist.js to a spotify playlist.
+
 const fs = require('fs');
 const path = require('path');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret } = require('../../../keys');
-const { artist, songs } = require('../../data/setlist');
+//Commented out to test connection through playlist.json
+//const { artist, songs } = require('../../data/setlist');
+const {songs,artist} = require('../../data/playlist')
 
 function connectToSpotifyApi(spotifyClient, spotifySecret) {
   const spotifyApi = new SpotifyWebApi({
