@@ -1,13 +1,15 @@
 var https = require('follow-redirects').https;
 var fs = require('fs');
 
+const {setlistFmKey} = require('../../../keys')
+
 var options = {
   'method': 'GET',
   'hostname': 'api.setlist.fm',
   'path': '/rest/1.0/setlist/4bb7d3c2',
   'headers': {
     'accept': 'application/json',
-    'x-api-key': 'NAfOueu-etj29FHm3uehzhq5_Ipr3pD68Ii5'
+    'x-api-key': setlistFmKey
   },
   'maxRedirects': 20
 };
