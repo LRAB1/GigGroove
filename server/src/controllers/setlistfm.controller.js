@@ -1,27 +1,32 @@
-const axios = require('axios');
-const fs = require('fs');
-const {setlistFmKey} = require('../../../keys.js')
+var https = require('follow-redirects').https;
+var fs = require('fs');
 
-const urlWithoutId = "https://api.setlist.fm/rest/1.0/setlist/";
-const iD = '1bd671f4'; //Setlist Afas Devin 4bb7d3c2
-
-let config = {
-  method: 'get',
-  maxBodyLength: Infinity,
-  url: urlWithoutId + iD,
-  headers: { 
-    'accept': 'application/json', 
-    'x-api-key': setlistFmKey
-  }
+var options = {
+  'method': 'GET',
+  'hostname': 'api.setlist.fm',
+  'path': '/rest/1.0/setlist/4bb7d3c2',
+  'headers': {
+    'accept': 'application/json',
+    'x-api-key': 'NAfOueu-etj29FHm3uehzhq5_Ipr3pD68Ii5'
+  },
+  'maxRedirects': 20
 };
 
-axios.request(config)
-  .then((response) => {
-    fs.writeFile('../../data/raw-setlist.json', JSON.stringify(response.data, null, 2), (err) => {
-      if (err) throw err;
-      console.log('Data written to file');
-    });
-  })
-  .catch((error) => {
-    console.log(error);
+var req = https.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
   });
+
+  res.on("end", function (chunk) {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+
+  res.on("error", function (error) {
+    console.error(error);
+  });
+});
+
+req.end();
