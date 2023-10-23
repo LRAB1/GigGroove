@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [setlistId, setSetlistId] = useState('');
   const [spotifyUsername, setSpotifyUsername] = useState('');
 
   const handleSearch = () => {
-    // Handle the user's input, make API requests to setlist.fm and Spotify.
+    // Assuming your backend API endpoint for Setlist.fm is '/api/setlistfm'
+    axios.post('/api/setlistfm', { setlistId })
+      .then(response => {
+        // Handle the response from your backend here, e.g., set data in your state.
+        // You can also perform Spotify login or any other actions as needed.
+      })
+      .catch(error => {
+        // Handle any errors.
+      });
   };
 
   return (
     <div className="App">
-      <h1>Welcome to Setlist Spotify App</h1>
+      <h1>Welcome to GigGroove</h1>
       <p>Enter your desired setlist and Spotify login details.</p>
       <input
         type="text"
