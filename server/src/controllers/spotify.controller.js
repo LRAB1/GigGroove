@@ -1,10 +1,9 @@
-const express = require('express');
+const http = require('http');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret, spotifyAccount, spotifyRedirectUri } = require('../../../keys');
 const { artist, venue, tour, songs } = require('../../data/setlist');
 
-const app = express();
-const port = 8888;
+const port = 3000;
 
 // Create a new instance of the Spotify Web API client
 const spotifyApi = new SpotifyWebApi({
@@ -51,48 +50,50 @@ const addSongsToPlaylist = async (playlistId) => {
   }
 };
 
-// Route to initiate the authorization flow
-app.get('/', (req, res) => {
-  const authorizeURL = spotifyApi.createAuthorizeURL(['playlist-modify-private'], 'state');
-  res.redirect(authorizeURL);
-});
+// Create an HTTP server
+const server = http.createServer(async (req, res) => {
+  try {
+    if (req.url === '/') {
+      const authorizeURL = spotifyApi.createAuthorizeURL(['playlist-modify-private'], 'state');
+      res.writeHead(302, { 'Location': authorizeURL });
+      res.end();
+    } else if (req.url.startsWith('/callback')) {
+      const urlParams = new URLSearchParams(req.url.substring(req.url.indexOf('?')));
+      const code = urlParams.get('code');
 
-// Route for the Spotify callback
-app.get('/callback', (req, res) => {
-  const { code } = req.query;
-
-  // Exchange the authorization code for an access token
-  spotifyApi.authorizationCodeGrant(code)
-    .then((data) => {
+      // Exchange the authorization code for an access token
+      const data = await spotifyApi.authorizationCodeGrant(code);
       console.log('Access token generated');
 
       // Set the access token and refresh token on the API client
       spotifyApi.setAccessToken(data.body['access_token']);
       spotifyApi.setRefreshToken(data.body['refresh_token']);
 
-      return createPlaylist();
-    })
-    .then((playlistId) => {
+      const playlistId = await createPlaylist();
       console.log('Playlist ID:', playlistId);
-      return addSongsToPlaylist(playlistId);
-    })
-    .then(() => {
+      await addSongsToPlaylist(playlistId);
+
       console.log('All tracks added to the playlist successfully!');
-      res.send(`
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      res.write(`
         <h1>Authorization Successful!</h1>
         <p>Playlist created and songs added!</p>
       `);
-    })
-    .catch((err) => {
-      console.log('Access token error:', err);
-      // Redirect to an error page or perform any other necessary actions
-      res.send('Authorization failed!');
-    });
+      res.end();
+    } else {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.write('Not Found');
+      res.end();
+    }
+  } catch (error) {
+    console.log('Error:', error);
+    res.writeHead(500, { 'Content-Type': 'text/plain' });
+    res.write('Internal Server Error');
+    res.end();
+  }
 });
 
 // Start the server
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-module.exports = app;
