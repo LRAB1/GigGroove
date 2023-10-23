@@ -3,37 +3,40 @@ import axios from 'axios';
 
 function App() {
   const [setlistId, setSetlistId] = useState('');
-  const [spotifyUsername, setSpotifyUsername] = useState('');
+  const [setlistData, setSetlistData] = useState(null);
 
-  const handleSearch = () => {
-    // Assuming your backend API endpoint for Setlist.fm is '/api/setlistfm'
-    axios.post('/api/setlistfm', { setlistId })
-      .then(response => {
-        // Handle the response from your backend here, e.g., set data in your state.
-        // You can also perform Spotify login or any other actions as needed.
-      })
-      .catch(error => {
-        // Handle any errors.
-      });
+  const handleSearchSetlist = async () => {
+    if (!setlistId) {
+      return; // Prevent empty input from making a request
+    }
+
+    try {
+      // Make an API request to your server's endpoint
+      const response = await axios.post('/api/setlistfm', { setlistId });
+      setSetlistData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div className="App">
-      <h1>Welcome to GigGroove</h1>
-      <p>Enter your desired setlist and Spotify login details.</p>
+      <h1>Welcome to Setlist Spotify App</h1>
+      <p>Enter the Setlist.fm Setlist ID:</p>
       <input
         type="text"
         placeholder="Setlist.fm Setlist ID"
         value={setlistId}
         onChange={(e) => setSetlistId(e.target.value)}
       />
-      <input
-        type="text"
-        placeholder="Spotify Username"
-        value={spotifyUsername}
-        onChange={(e) => setSpotifyUsername(e.target.value)}
-      />
-      <button onClick={handleSearch}>Search and Log In</button>
+      <button onClick={handleSearchSetlist}>Search Setlist</button>
+
+      {setlistData && (
+        <div>
+          <h2>Setlist Data</h2>
+          <pre>{JSON.stringify(setlistData, null, 2)}</pre>
+        </div>
+      )}
     </div>
   );
 }

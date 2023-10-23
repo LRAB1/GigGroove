@@ -3,7 +3,7 @@ const fs = require('fs');
 const { setlistFmKey } = require('../../../keys');
 
 const retrievedSetlist = [];
-const iD = '4bb7d3c2';
+const iD = '';
 
 const options = {
   method: 'GET',
@@ -16,7 +16,7 @@ const options = {
   maxRedirects: 20
 };
 
-const getRequest = () => {
+const searchSetlist = () => {
   return new Promise((resolve, reject) => {
     const req = https.request(options, function (res) {
       const chunks = [];
@@ -41,10 +41,12 @@ const getRequest = () => {
 
 (async () => {
   try {
-    const body = await getRequest();
+    const body = await searchSetlist();
     retrievedSetlist.push(body);
     console.log(retrievedSetlist[0]);
   } catch (error) {
     console.error(error);
   }
 })();
+
+module.exports = searchSetlist
