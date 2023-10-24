@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { retrievedSetlist } = require('./controllers/setlistfm.controller')
 
-const setlistData = require('../../data/raw-setlist.json');
+//const setlistData = require('../../data/raw-setlist.js');
 
 function formatSetlist(setlistData) {
   const artist = setlistData.artist.name;

@@ -11,13 +11,15 @@ function App() {
     }
 
     try {
-      // Make an API request to your server's endpoint
-      const response = await axios.post('/api/setlistfm', { setlistId });
+      // Make a POST request to your backend API route
+      const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
+
+      // Update the state with the response data
       setSetlistData(response.data);
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   return (
     <div className="App">
