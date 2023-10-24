@@ -1,11 +1,12 @@
 const https = require('follow-redirects').https;
 const fs = require('fs');
+const path = require('path');
 const { setlistFmKey } = require('../../../keys');
-
 
 const retrievedSetlist = [];
 
 const searchSetlist = async (iD) => {
+  // Define the options for the Setlist.fm API request
   const options = {
     method: 'GET',
     hostname: 'api.setlist.fm',
@@ -35,6 +36,9 @@ const searchSetlist = async (iD) => {
         // Log the response for debugging
         console.log(retrievedSetlist[0]);
 
+        // Export the retrievedSetlist to a JSON file
+        exportRetrievedSetlist();
+
         resolve(setlistData);
       });
 
@@ -45,6 +49,18 @@ const searchSetlist = async (iD) => {
 
     req.end();
   });
+};
+
+const exportRetrievedSetlist = () => {
+  const outputPath = path.join(__dirname, '../../data/raw-setlist.json');
+
+  try {
+    // Write the retrievedSetlist to a JSON file
+    fs.writeFileSync(outputPath, JSON.stringify(retrievedSetlist, null, 2));
+    console.log(`Retrieved Setlist saved to ${outputPath}`);
+  } catch (error) {
+    console.error(`Error while saving retrieved Setlist: ${error.message}`);
+  }
 };
 
 module.exports = {

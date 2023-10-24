@@ -4,6 +4,7 @@ import axios from 'axios';
 function App() {
   const [setlistId, setSetlistId] = useState('');
   const [setlistData, setSetlistData] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSearchSetlist = async () => {
     if (!setlistId) {
@@ -14,10 +15,18 @@ function App() {
       // Make a POST request to your backend API route
       const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
 
-      // Update the state with the response data
-      setSetlistData(response.data);
+      // Check if the response contains setlist data
+      if (response.data) {
+        setSetlistData(response.data);
+        setErrorMessage(''); // Clear any previous error message
+      } else {
+        setSetlistData(null);
+        setErrorMessage('Setlist not found');
+      }
     } catch (error) {
       console.error(error);
+      setSetlistData(null);
+      setErrorMessage('Setlist not found');
     }
   }
 
@@ -33,12 +42,18 @@ function App() {
       />
       <button onClick={handleSearchSetlist}>Search Setlist</button>
 
-      {setlistData && (
+      {errorMessage && (
         <div>
-          <h2>Setlist Data</h2>
-          <pre>{JSON.stringify(setlistData, null, 2)}</pre>
+          <h2>{errorMessage}</h2>
         </div>
       )}
+
+      {setlistData && !setlistData.code ? (
+        <div>
+          <h2>Setlist Data: found</h2>
+          <button onClick={() => window.location.href = 'http://localhost:3001/api/groovify'}>Groovify!</button>
+        </div>
+      ) : null}
     </div>
   );
 }
