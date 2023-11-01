@@ -4,9 +4,8 @@ const router = express.Router();
 const formatSetlist = require('../models/setlist.model');
 
 // Change this to handle GET requests
-router.get('/groovify', (req, res) => {
-  // Handle the GET request logic here
-  // You can use the formatSetlist function to format the setlist data
+router.post('/groovify', formatSetlist, (req, res) => {
+console.log('Groovify request fired off')
 });
 
-module.exports = router;
+module.exports = formatSetlist;

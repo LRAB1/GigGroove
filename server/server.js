@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
 const formatSetlist = require('./src/models/setlist.model');
-const setlistFmRouter = require('./src/routers/setlistFm.router'); 
+const setlistFmRouter = require('./src/routers/setlistfm.router'); 
 
 app.use(express.json());
 app.use(cors());
