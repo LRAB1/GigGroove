@@ -1,10 +1,11 @@
+// server.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const http = require('http');
 const port = process.env.PORT || 3001;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
-const formatSetlist = require('./src/models/setlist.model');
-const setlistFmRouter = require('./src/routers/setlistfm.router'); 
+const cleanUpRouter = require('./src/routers/cleanup.router');
 
 app.use(express.json());
 app.use(cors());
@@ -23,8 +24,8 @@ app.post('/api/searchSetlist', async (req, res) => {
   }
 });
 
-// Use the setlistFmRouter for the "groovify" route
-app.use('/api/groovify', setlistFmRouter);
+// Use the cleanUpRouter for the "cleanup" route
+app.use('/api/cleanup', cleanUpRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

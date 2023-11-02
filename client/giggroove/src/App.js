@@ -1,3 +1,4 @@
+// App.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -12,7 +13,7 @@ function App() {
     }
 
     try {
-      // Make a POST request to your backend API route
+      // Make a POST request to the /api/searchSetlist route
       const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
 
       // Check if the response contains setlist data
@@ -30,26 +31,20 @@ function App() {
     }
   }
 
-  const handleGroovify = async () => {
-    if (!setlistData) {
-      setErrorMessage('No setlist data to Groovify.');
-      return;
-    }
-
+  const handleSetlistCleanup = async () => {
     try {
-      // Make a POST request to the groovify route
-      const response = await axios.post('http://localhost:3001/api/groovify');
+      // Make a POST request to the /api/cleanup route
+      const response = await axios.post('http://localhost:3001/api/cleanup', { setlistId });
 
-      // Check if the response is successful
-      if (response.data && response.data.success) {
-        // Handle the success, e.g., redirect or display a message
-        console.log('Groovify successful');
+      // Check the response and handle it accordingly
+      if (response.data && response.data.message === 'Cleanup successful') {
+        setErrorMessage('Cleanup successful');
       } else {
-        setErrorMessage('Groovify failed. Please check the server.');
+        setErrorMessage('Cleanup failed. An error occurred.');
       }
     } catch (error) {
       console.error(error);
-      setErrorMessage('Groovify failed. An error occurred.');
+      setErrorMessage('Cleanup failed. An error occurred.');
     }
   }
 
@@ -74,7 +69,7 @@ function App() {
       {setlistData && !setlistData.code ? (
         <div>
           <h2>Setlist Data: found</h2>
-          <button onClick={handleGroovify}>Groovify!</button>
+          <button onClick={handleSetlistCleanup}>Cleanup Setlist</button>
         </div>
       ) : null}
     </div>
