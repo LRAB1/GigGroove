@@ -1,4 +1,7 @@
-// setlist.model.js
+const fs = require('fs');
+const path = require('path');
+
+const setlistData = require('../../data/raw-setlist.json');
 
 function formatSetlist(setlistData) {
   const artist = setlistData.artist.name;
@@ -16,14 +19,20 @@ function formatSetlist(setlistData) {
     };
   });
 
-  const formattedData = {
-    artist,
-    venue,
-    tour,
-    songs,
-  };
+  const output = `const artist = "${artist}";
+const venue = "${venue}";
+const tour = "${tour}";
+const songs = ${JSON.stringify(songs, null, 2)};
 
-  return formattedData;
+module.exports = { artist, venue, tour, songs };`;
+
+  return output;
 }
+
+const output = formatSetlist(setlistData);
+const outputPath = path.join(__dirname, '../../data/setlist.js');
+fs.writeFileSync(outputPath, output);
+
+console.log(`Setlist saved to ${outputPath}`);
 
 module.exports = formatSetlist;
