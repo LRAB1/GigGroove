@@ -30,6 +30,29 @@ function App() {
     }
   }
 
+  const handleGroovify = async () => {
+    if (!setlistData) {
+      setErrorMessage('No setlist data to Groovify.');
+      return;
+    }
+
+    try {
+      // Make a POST request to the groovify route
+      const response = await axios.post('http://localhost:3001/api/groovify');
+
+      // Check if the response is successful
+      if (response.data && response.data.success) {
+        // Handle the success, e.g., redirect or display a message
+        console.log('Groovify successful');
+      } else {
+        setErrorMessage('Groovify failed. Please check the server.');
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage('Groovify failed. An error occurred.');
+    }
+  }
+
   return (
     <div className="App">
       <h1>Welcome to Setlist Spotify App</h1>
@@ -51,7 +74,7 @@ function App() {
       {setlistData && !setlistData.code ? (
         <div>
           <h2>Setlist Data: found</h2>
-          <button onClick={() => window.location.href = 'http://localhost:3001/api/groovify'}>Groovify!</button>
+          <button onClick={handleGroovify}>Groovify!</button>
         </div>
       ) : null}
     </div>
