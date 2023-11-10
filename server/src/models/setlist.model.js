@@ -41,4 +41,4 @@ if (output) {
   console.log(`Setlist saved to ${outputPath}`);
 }
 
-module.exports = formatSetlist;
+module.exports = { formatSetlist }; // Exporting as an object

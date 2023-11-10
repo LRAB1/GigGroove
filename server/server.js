@@ -5,6 +5,7 @@ const app = express();
 const http = require('http');
 const port = process.env.PORT || 3001;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
+const setlistFmRouter = require('./src/routers/spotify.router');
 const cleanUpRouter = require('./src/routers/cleanup.router');
 
 app.use(express.json());
@@ -25,7 +26,7 @@ app.post('/api/searchSetlist', async (req, res) => {
 });
 
 // Use the cleanUpRouter for the "cleanup" route
-app.use('/api/cleanup', cleanUpRouter);
+app.use('/api', cleanUpRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
