@@ -1,9 +1,9 @@
 const http = require('http');
 const SpotifyWebApi = require('spotify-web-api-node');
-const { spotifyClient, spotifySecret, spotifyAccount, spotifyRedirectUri } = require('../../../keys');
+const { spotifyClient, spotifySecret, spotifyRedirectUri } = require('../../../keys');
 const { artist, venue, tour, songs } = require('../../data/setlist');
 
-const port = 3000;
+const port = 3002;
 
 // Create a new instance of the Spotify Web API client
 const spotifyApi = new SpotifyWebApi({

@@ -4,9 +4,13 @@ const path = require('path');
 const setlistData = require('../../data/raw-setlist.json');
 
 function formatSetlist(setlistData) {
+  if (!setlistData || !setlistData.artist || !setlistData.venue) {
+    return null; // Handle the case when setlistData is undefined or missing properties
+  }
+
   const artist = setlistData.artist.name;
   const venue = setlistData.venue.name;
-  const tour = setlistData.tour ? setlistData.tour.name : `${venue}`; // Check if setlistData.tour exists
+  const tour = setlistData.tour ? setlistData.tour.name : `${venue}`;
   const sets = setlistData.sets.set;
 
   const songs = sets.map((set, index) => {
@@ -30,7 +34,11 @@ module.exports = { artist, venue, tour, songs };`;
 }
 
 const output = formatSetlist(setlistData);
-const outputPath = path.join(__dirname, '../../data/setlist.js');
-fs.writeFileSync(outputPath, output);
 
-console.log(`Setlist saved to ${outputPath}`);
+if (output) {
+  const outputPath = path.join(__dirname, '../../data/setlist.js');
+  fs.writeFileSync(outputPath, output);
+  console.log(`Setlist saved to ${outputPath}`);
+}
+
+module.exports = { formatSetlist }; // Exporting as an object
