@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const setlistModel = require('../models/setlist.model');
+const { formatSetlist} = require('../models/setlist.model');
 
 router.post('/cleanup', async (req, res) => {
   console.log('Cleanup request fired off');
