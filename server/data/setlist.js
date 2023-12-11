@@ -1,25 +1,30 @@
-const artist = "Disturbed";
-const venue = "Ziggo Dome";
-const tour = "Immortalized";
+const artist = "Bullet for My Valentine";
+const venue = "Melkweg The Max";
+const tour = "Gravity";
 const songs = [
   {
     "setNumber": 1,
     "songs": [
-      "The Eye of the Storm",
-      "Immortalized",
-      "The Game",
-      "The Vengeful One",
-      "Prayer",
-      "Liberate",
-      "Remember",
-      "Stupify",
-      "The Sound of Silence",
-      "Inside the Fire",
-      "The Light",
-      "Stricken",
-      "Indestructible",
-      "Ten Thousand Fists",
-      "Down With the Sickness"
+      "Don't Need You",
+      "Over It",
+      "Your Betrayal",
+      "4 Words (to Choke Upon)",
+      "You Want a Battle? (Here's a War)",
+      "The Last Fight",
+      "Letting You Go",
+      "Worthless",
+      "Army of Noise",
+      "Scream Aim Fire",
+      "Piece of Me"
+    ]
+  },
+  {
+    "setNumber": 2,
+    "songs": [
+      "V",
+      "No Way Out",
+      "Tears Don't Fall",
+      "Waking the Demon"
     ]
   }
 ];

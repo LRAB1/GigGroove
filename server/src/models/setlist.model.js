@@ -63,8 +63,5 @@ module.exports = { artist, venue, tour, songs };`;
   initialized = true;
 }
 
-// Call the formatSetlist function (initialize function)
-formatSetlist();
-
 // Export the formatSetlist function for external use
 module.exports = { formatSetlist };
