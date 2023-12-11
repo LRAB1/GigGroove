@@ -34,7 +34,7 @@ function App() {
   const handleSetlistCleanup = async () => {
     try {
       // Make a POST request to the /api/cleanup route
-      const response = await axios.post('http://localhost:3001/api/cleanup', { setlistId });
+      const response = await axios.post('http://localhost:3001/api/cleanup');
 
       // Check the response and handle it accordingly
       if (response.data && response.data.message === 'Cleanup successful') {

@@ -1,17 +1,36 @@
 const fs = require('fs');
 const path = require('path');
 
-const setlistData = require('../../data/raw-setlist.json');
+let initialized = false;
 
-function formatSetlist(setlistData) {
-  if (!setlistData || !setlistData.artist || !setlistData.venue) {
-    return null; // Handle the case when setlistData is undefined or missing properties
+function formatSetlist() {
+  if (initialized) {
+    return;
   }
 
-  const artist = setlistData.artist.name;
-  const venue = setlistData.venue.name;
-  const tour = setlistData.tour ? setlistData.tour.name : `${venue}`;
-  const sets = setlistData.sets.set;
+  let setlistData;
+
+  try {
+    // Synchronously read the setlist data
+    const rawData = fs.readFileSync(path.join(__dirname, '../../data/raw-setlist.json'), 'utf8');
+    setlistData = JSON.parse(rawData);
+    console.log('Made it 0');
+    console.log('Setlist Data:', setlistData); // Log the setlist data
+  } catch (error) {
+    console.log('Error reading setlist data:', error.message);
+    return null;
+  }
+
+  // Check if setlistData is an array and contains at least one element
+  if (!Array.isArray(setlistData) || setlistData.length === 0 || !setlistData[0].artist || !setlistData[0].venue) {
+    console.log('Made it 1');
+    return null;
+  }
+
+  const artist = setlistData[0].artist.name;
+  const venue = setlistData[0].venue.name;
+  const tour = setlistData[0].tour ? setlistData[0].tour.name : `${venue}`;
+  const sets = setlistData[0].sets.set;
 
   const songs = sets.map((set, index) => {
     const setNumber = index + 1;
@@ -30,15 +49,22 @@ const songs = ${JSON.stringify(songs, null, 2)};
 
 module.exports = { artist, venue, tour, songs };`;
 
-  return output;
+  try {
+    const outputPath = path.join(__dirname, '../../data/setlist.js');
+    console.log('Output Path:', outputPath); // Log the output path
+    fs.writeFileSync(outputPath, output);
+    console.log(`Setlist saved to ${outputPath}`);
+  } catch (error) {
+    console.error(`Error while saving Setlist: ${error.message}`);
+  }
+
+  console.log('Made it 4');
+
+  initialized = true;
 }
 
-const output = formatSetlist(setlistData);
+// Call the formatSetlist function (initialize function)
+formatSetlist();
 
-if (output) {
-  const outputPath = path.join(__dirname, '../../data/setlist.js');
-  fs.writeFileSync(outputPath, output);
-  console.log(`Setlist saved to ${outputPath}`);
-}
-
-module.exports = { formatSetlist }; // Exporting as an object
+// Export the formatSetlist function for external use
+module.exports = { formatSetlist };
