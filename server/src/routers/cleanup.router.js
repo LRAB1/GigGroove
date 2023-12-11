@@ -1,23 +1,13 @@
-// cleanup.router.js
 const express = require('express');
 const router = express.Router();
 const setlistModel = require('../models/setlist.model');
 
-router.post('/cleanup', async (req, res) => {
+// Define the route
+router.post('/cleanup', (req, res) => {
+  setlistModel.formatSetlist(); // Call the formatSetlist function
   console.log('Cleanup request fired off');
-
-  try {
-    // Assuming you have some data to format, you can pass it to the formatSetlist function
-    const formattedData = setlistModel.formatSetlist(req.body);
-
-    // You can send back the formatted data as a response or perform other operations
-    // Respond with the formatted data
-    res.json(formattedData);
-    console.log(formattedData);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred during setlist cleanup' });
-  }
+  res.status(200).json({ message: 'Cleanup successful' });
 });
 
+console.log('Made it to the cleanup router.');
 module.exports = router;

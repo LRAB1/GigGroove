@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { setlistFmKey } = require('../../../keys');
 
+//Create an array for debugging purposes, it shows the retrieved setlist.
 const retrievedSetlist = [];
 
 const searchSetlist = async (iD) => {
@@ -30,16 +31,23 @@ const searchSetlist = async (iD) => {
         const body = Buffer.concat(chunks);
         const setlistData = body.toString();
 
-        // Push the setlist data to retrievedSetlist
-        retrievedSetlist.push(setlistData);
+        try {
+          // Parse the setlistData to ensure it's valid JSON
+          const parsedSetlistData = JSON.parse(setlistData);
 
-        // Log the response for debugging
-        console.log(retrievedSetlist[0]);
+          // Push the parsed setlist data to retrievedSetlist
+          retrievedSetlist.push(parsedSetlistData);
 
-        // Export the retrievedSetlist to a JSON file
-        exportRetrievedSetlist();
+          // Log the response for debugging
+          console.log(retrievedSetlist[0]);
 
-        resolve(setlistData);
+          // Export the retrievedSetlist to a JSON file
+          exportRetrievedSetlist();
+
+          resolve(setlistData);
+        } catch (error) {
+          reject(error);
+        }
       });
 
       res.on('error', function (error) {
