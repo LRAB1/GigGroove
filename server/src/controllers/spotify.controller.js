@@ -5,7 +5,7 @@ const { spotifyClient, spotifySecret, spotifyRedirectUri } = require('../../../k
 const { artist, tour, songs } = require('../../data/setlist');
 
 const createServer = () => {
-  const port = 3002;
+  const port = 3030;
   let server; // Declare the server variable
 
   // Create a new instance of the Spotify Web API client

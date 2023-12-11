@@ -34,7 +34,7 @@ function App() {
   const handleSetlistCleanup = async () => {
     try {
       // Make a POST request to the /api/cleanup route
-      const response = await axios.post('http://localhost:3001/api/cleanup');
+      const response = await axios.post('http://localhost:3030/api/cleanup');
 
       // Check the response and handle it accordingly
       if (response.data && response.data.message === 'Cleanup successful') {
@@ -50,7 +50,7 @@ function App() {
 
   const handleGroovify = async () => {
     // Redirect the user to localhost:3002
-    window.location.href = 'http://localhost:3002';
+    window.location.href = 'http://localhost:3031';
   }
 
   return (
