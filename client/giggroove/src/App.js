@@ -48,6 +48,11 @@ function App() {
     }
   }
 
+  const handleGroovify = async () => {
+    // Redirect the user to localhost:3002
+    window.location.href = 'http://localhost:3002';
+  }
+
   return (
     <div className="App">
       <h1>Welcome to Setlist Spotify App</h1>
@@ -70,6 +75,7 @@ function App() {
         <div>
           <h2>Setlist Data: found</h2>
           <button onClick={handleSetlistCleanup}>Cleanup Setlist</button>
+          <button onClick={handleGroovify}>Groovify</button>
         </div>
       ) : null}
     </div>

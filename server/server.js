@@ -5,7 +5,8 @@ const app = express();
 const http = require('http');
 const port = process.env.PORT || 3001;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
-const setlistFmRouter = require('./src/routers/spotify.router');
+const createServer = require('./src/controllers/spotify.controller');  // Import the factory function
+
 const cleanUpRouter = require('./src/routers/cleanup.router');
 
 app.use(express.json());
@@ -27,6 +28,12 @@ app.post('/api/searchSetlist', async (req, res) => {
 
 // Use the cleanUpRouter for the "cleanup" route
 app.use('/api', cleanUpRouter);
+
+// Call the factory function to get the groovify function and server
+const { groovify, server } = createServer();
+
+// Call groovify from the server
+groovify();
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

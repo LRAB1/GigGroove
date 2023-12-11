@@ -1,30 +1,31 @@
-const artist = "Bullet for My Valentine";
-const venue = "Melkweg The Max";
-const tour = "Gravity";
+const artist = "HAEVN";
+const venue = "Koninklijk Theater Carré";
+const tour = "Koninklijk Theater Carré";
 const songs = [
   {
     "setNumber": 1,
     "songs": [
-      "Don't Need You",
-      "Over It",
-      "Your Betrayal",
-      "4 Words (to Choke Upon)",
-      "You Want a Battle? (Here's a War)",
-      "The Last Fight",
-      "Letting You Go",
-      "Worthless",
-      "Army of Noise",
-      "Scream Aim Fire",
-      "Piece of Me"
-    ]
-  },
-  {
-    "setNumber": 2,
-    "songs": [
-      "V",
-      "No Way Out",
-      "Tears Don't Fall",
-      "Waking the Demon"
+      "Keep your promise",
+      "The Sea",
+      "Where the Heart Is",
+      "Giving",
+      "Hold On To My Love",
+      "Throw Me a Line",
+      "We Are",
+      "Holy Ground",
+      "Welcome The Wind",
+      "City Lights",
+      "Trade It for the Night",
+      "Where Did You Go",
+      "The Other Side of Sea",
+      "Fortitude",
+      "One Day",
+      "Finding Out More",
+      "Bright Lights",
+      "Love Is a Game",
+      "Keep your promise",
+      "Back in the Water",
+      "Kite in a Hurricane"
     ]
   }
 ];
