@@ -1,5 +1,6 @@
 server/.gitignore
 keys.js
+keys
 server/node_modules
 node_modules
 .readme
