@@ -1,5 +1,5 @@
 // spotify.controller.js
-const http = require('http');
+const https = require('https');
 const SpotifyWebApi = require('spotify-web-api-node');
 const { spotifyClient, spotifySecret, spotifyRedirectUri } = require('../../../keys');
 const { artist, tour, songs } = require('../../data/setlist');
@@ -8,12 +8,13 @@ const createServer = () => {
   const port = 3030;
   let server; // Declare the server variable
 
-  // Create a new instance of the Spotify Web API client
-  const spotifyApi = new SpotifyWebApi({
-    clientId: spotifyClient,
-    clientSecret: spotifySecret,
-    redirectUri: spotifyRedirectUri
-  });
+  // DEPRECATED, MOVED TO spotify.auth.controller.js
+  // // Create a new instance of the Spotify Web API client
+  // const spotifyApi = new SpotifyWebApi({
+  //   clientId: spotifyClient,
+  //   clientSecret: spotifySecret,
+  //   redirectUri: spotifyRedirectUri
+  // });
 
   // Function to create a playlist
   const createPlaylist = async () => {
