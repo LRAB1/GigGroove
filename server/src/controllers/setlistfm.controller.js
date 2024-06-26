@@ -14,7 +14,7 @@ const searchSetlist = async (iD) => {
     path: `/rest/1.0/setlist/${iD}`,
     headers: {
       accept: 'application/json',
-      'x-api-key': setlistFmKey,
+      'x-api-key': setlistFmKey, //Needs setlistFmKey from keys.js
     },
     maxRedirects: 20,
   };
@@ -46,12 +46,12 @@ const searchSetlist = async (iD) => {
 
           resolve(setlistData);
         } catch (error) {
-          reject(error);
+          console.log(error); //Catch the error and log it, debugging made easy.
         }
       });
 
       res.on('error', function (error) {
-        reject(error);
+        console.log(error); //Catch the error and log it, debugging made easy.
       });
     });
 
