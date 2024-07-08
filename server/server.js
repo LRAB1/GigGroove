@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const http = require('http');
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 8000;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
 const createServer = require('./src/controllers/spotify.controller');  // Import the factory function
 

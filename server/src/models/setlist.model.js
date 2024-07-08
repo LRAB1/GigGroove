@@ -23,7 +23,7 @@ function formatSetlist() {
 
   // Check if setlistData is an array and contains at least one element
   if (!Array.isArray(setlistData) || setlistData.length === 0 || !setlistData[0].artist || !setlistData[0].venue) {
-    console.log('Made it 1');
+    console.log('Made it 1'); //TODO: Determine what this log was/is used for and determine if it still needs to exist.
     return null;
   }
 

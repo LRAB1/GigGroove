@@ -56,7 +56,7 @@ const createServer = () => {
   const groovify = async () => {
     return new Promise(async (resolve, reject) => {
       // Create an HTTP server
-      server = http.createServer(async (req, res) => {
+      server = https.createServer(async (req, res) => {
         try {
           if (req.url === '/') {
             const authorizeURL = spotifyApi.createAuthorizeURL(['playlist-modify-private'], 'state');
