@@ -14,6 +14,7 @@ function App() {
 
     try {
       // Make a POST request to the /api/searchSetlist route
+      //TODO: determine if we should just call the router instead of making a POST to the route.
       const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
 
       // Check if the response contains setlist data
@@ -34,6 +35,7 @@ function App() {
   const handleSetlistCleanup = async () => {
     try {
       // Make a POST request to the /api/cleanup route
+      //TODO: determine if we should just call the route/function instead of making a POST to the route.
       const response = await axios.post('http://localhost:3030/api/cleanup');
 
       // Check the response and handle it accordingly

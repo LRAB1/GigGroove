@@ -10,4 +10,4 @@ router.post('/cleanup', (req, res) => {
 });
 
 console.log('Made it to the cleanup router.');
-module.exports = router;
+module.exports = cleanupRouter;
