@@ -3,5 +3,6 @@ const router = express.Router();
 const setlistfmController = require('../controllers/setlistfm.controller'); // Import your controller
 
 router.post('/searchSetlist', setlistfmController.searchSetlist); // Define the route
+router.post('/retrievedSetlist', setlistfmController.retrievedSetlist); // Define the retrieved list route
 
-module.exports = setlistFmRouter;
+module.exports = setlistFmRouter, setlistFmRetrieve;

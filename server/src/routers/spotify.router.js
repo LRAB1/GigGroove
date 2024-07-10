@@ -16,4 +16,4 @@ router.post('/groovify', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = spotifyRouter;

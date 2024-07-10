@@ -14,7 +14,8 @@ function App() {
 
     try {
       // Make a POST request to the /api/searchSetlist route
-      const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
+      //TODO: determine if we should just call the router instead of making a POST to the route.
+      const response = await axios.post('http://localhost:8000/api/searchSetlist', { setlistId });
 
       // Check if the response contains setlist data
       if (response.data) {
@@ -34,7 +35,8 @@ function App() {
   const handleSetlistCleanup = async () => {
     try {
       // Make a POST request to the /api/cleanup route
-      const response = await axios.post('http://localhost:3030/api/cleanup');
+      //TODO: determine if we should just call the route/function instead of making a POST to the route.
+      const response = await axios.post('http://localhost:8000/api/cleanup');
 
       // Check the response and handle it accordingly
       if (response.data && response.data.message === 'Cleanup successful') {
@@ -50,7 +52,7 @@ function App() {
 
   const handleGroovify = async () => {
     // Redirect the user to localhost:3002
-    window.location.href = 'http://localhost:3031';
+    window.location.href = 'http://localhost:8000';
   }
 
   return (
