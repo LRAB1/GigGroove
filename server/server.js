@@ -1,13 +1,11 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const http = require('http');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 const setlistfmController = require('./src/controllers/setlistfm.controller');
-const createServer = require('./src/controllers/spotify.controller');  // Import the factory function
-
-const cleanUpRouter = require('./src/routers/cleanup.router');
+const spotifyRouter = require('./src/routers/spotify.router');
+const cleanupRouter = require('./src/routers/cleanup.router');
+const spotifyAuthRouter = require('./src/controllers/spotify.auth.controller');
 
 app.use(express.json());
 app.use(cors());
@@ -26,14 +24,11 @@ app.post('/api/searchSetlist', async (req, res) => {
   }
 });
 
-// Use the cleanUpRouter for the "cleanup" route
-app.use('/api', cleanUpRouter);
+// Use the cleanupRouter for the "cleanup" route
+app.use('/api', cleanupRouter);
 
-// Call the factory function to get the groovify function and server
-const { groovify, server } = createServer();
-
-// Call groovify from the server
-groovify();
+// Use the spotifyAuthRouter for the Spotify authentication flow
+app.use('/spotify', spotifyAuthRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

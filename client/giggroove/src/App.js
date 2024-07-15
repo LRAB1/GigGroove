@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -14,8 +13,7 @@ function App() {
 
     try {
       // Make a POST request to the /api/searchSetlist route
-      //TODO: determine if we should just call the router instead of making a POST to the route.
-      const response = await axios.post('http://localhost:8000/api/searchSetlist', { setlistId });
+      const response = await axios.post('http://localhost:3001/api/searchSetlist', { setlistId });
 
       // Check if the response contains setlist data
       if (response.data) {
@@ -30,17 +28,17 @@ function App() {
       setSetlistData(null);
       setErrorMessage('Setlist not found');
     }
-  }
+  };
 
   const handleSetlistCleanup = async () => {
     try {
       // Make a POST request to the /api/cleanup route
-      //TODO: determine if we should just call the route/function instead of making a POST to the route.
-      const response = await axios.post('http://localhost:8000/api/cleanup');
+      const response = await axios.post('http://localhost:3001/api/cleanup');
 
       // Check the response and handle it accordingly
       if (response.data && response.data.message === 'Cleanup successful') {
         setErrorMessage('Cleanup successful');
+        setSetlistData(null);
       } else {
         setErrorMessage('Cleanup failed. An error occurred.');
       }
@@ -48,12 +46,11 @@ function App() {
       console.error(error);
       setErrorMessage('Cleanup failed. An error occurred.');
     }
-  }
+  };
 
-  const handleGroovify = async () => {
-    // Redirect the user to localhost:3002
-    window.location.href = 'http://localhost:8000';
-  }
+  const handleGroovify = () => {
+    window.location.href = 'http://localhost:3001/spotify/login';
+  };
 
   return (
     <div className="App">
