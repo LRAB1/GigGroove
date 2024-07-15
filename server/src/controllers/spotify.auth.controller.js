@@ -100,9 +100,3 @@ spotifyAuthRouter.get('/me', async (req, res) => {
 });
 
 module.exports = spotifyAuthRouter;
-
-
-const codeVerifier = generateRandomString(64);
-const hashed = hash(codeVerifier);
-const codeChallenge = base64encode(hashed);
-  generateRandomString();
