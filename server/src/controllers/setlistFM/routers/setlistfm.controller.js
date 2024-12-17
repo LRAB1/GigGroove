@@ -1,25 +1,31 @@
-const https = require('follow-redirects').https;
-const fs = require('fs');
-const path = require('path');
-const { setlistFmKey } = require('../../../keys');
-const express = require('express');
+const axios = require('axios');
 
-const app = express();
+const SETLISTFM_URL = 'https://api.setlist.fm/rest/1.0/setlist/';
+const {SETLIST_KEY} = require('../../../../../keys');
+const iD = '23ba2c6f';
 
-const SETLISTFM_URL = 'https://setlist.fm/1.0/setlist/';
+async function getSetlist() {
 
-//Create an array for debugging purposes, it shows the retrieved setlist.
-const retrievedSetlist = [];
+let data = '';
 
-async function searchSetlist (req, res) {
-  try {
-    return await fetch (`${SETLISTFM_URL}/${iD}`, {
-      
-    }})
-  }
+let config = {
+  method: 'get',
+  maxBodyLength: Infinity,
+  url: `${SETLISTFM_URL}${iD}`,
+  headers: { 
+    'x-api-key': SETLIST_KEY,
+    'Accept': 'application/json'
+  },
+  data : data
 };
 
-module.exports = {
-  searchSetlist,
-  retrievedSetlist,
-};
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+}
+
+getSetlist();
