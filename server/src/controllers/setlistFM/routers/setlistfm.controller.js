@@ -28,8 +28,6 @@ axios.request(config)
 });
 }
 
-getSetlist();
-
 module.exports = {
   getSetlist,
 };
